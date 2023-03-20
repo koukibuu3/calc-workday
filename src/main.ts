@@ -1,5 +1,5 @@
 import { serve } from 'https://deno.land/std@0.175.0/http/server.ts'
-import dayjs from 'npm:dayjs@1.11.7'
+import dayjs from 'https://esm.sh/dayjs@1.11.7'
 import Holidays from './Holidays.ts'
 import SpecialHolidays from './SpecialHolidays.ts'
 

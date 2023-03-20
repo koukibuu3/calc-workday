@@ -1,5 +1,5 @@
 import { format } from 'https://deno.land/std@0.174.0/datetime/format.ts'
-import { Dayjs } from 'npm:dayjs@1.11.7'
+import { Dayjs } from 'https://esm.sh/dayjs@1.11.7'
 
 class Holidays {
   private year: number

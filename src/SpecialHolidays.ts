@@ -1,4 +1,4 @@
-import { Dayjs } from 'npm:dayjs@1.11.7'
+import { Dayjs } from 'https://esm.sh/dayjs@1.11.7'
 import SpecialHolidayClient from './components/SpecialHolidayClient.ts'
 
 const SpecialHolidays = async (date: Dayjs) => {

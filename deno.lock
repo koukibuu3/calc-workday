@@ -17,17 +17,11 @@
     "https://deno.land/std@0.175.0/encoding/csv.ts": "54a6a10cce7e3ef37e13b2baf87474fe0f7bfd6125ab5a456cd9e3cab93543f0",
     "https://deno.land/std@0.175.0/encoding/csv/_io.ts": "532380f87f80c162c16a608093714822a4b4a5f30b304d8b9c73c71af3ba3910",
     "https://deno.land/std@0.175.0/encoding/csv/_parser.ts": "7a91bf88fa1e85c448c5e423bcdb7eb534d7e935cc758d5d78acfab7729bed36",
-    "https://deno.land/std@0.175.0/http/server.ts": "cbb17b594651215ba95c01a395700684e569c165a567e4e04bba327f41197433"
-  },
-  "npm": {
-    "specifiers": {
-      "dayjs@1.11.7": "dayjs@1.11.7"
-    },
-    "packages": {
-      "dayjs@1.11.7": {
-        "integrity": "sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==",
-        "dependencies": {}
-      }
-    }
+    "https://deno.land/std@0.175.0/http/server.ts": "cbb17b594651215ba95c01a395700684e569c165a567e4e04bba327f41197433",
+    "https://esm.sh/dayjs@1.11.7": "2a7ea8ac7247f581a80ba6534b68d040e7bf78e48d1aa48f015e0b05aeeeb2df",
+    "https://esm.sh/v111/dayjs@1.11.7/deno/dayjs.js": "92cf0f0bb278d7757f72bec98ca90e7af05e9d5b5859231d73ffd85197798499",
+    "https://esm.sh/v111/dayjs@1.11.7/index.d.ts": "09d906c1aeb34304755b072698e6728d3e83ed0b6366cf82e695f7a0f078564e",
+    "https://esm.sh/v111/dayjs@1.11.7/locale/index.d.ts": "d05d8c67116dceafc62e691c47ac89f8f10cf7313cd1b2fb4fe801c2bf1bb1a7",
+    "https://esm.sh/v111/dayjs@1.11.7/locale/types.d.ts": "73a0ee6395819b063df4b148211985f2e1442945c1a057204cf4cf6281760dc3"
   }
 }
