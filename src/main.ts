@@ -1,40 +1,56 @@
-import { format } from "https://deno.land/std@0.174.0/datetime/format.ts";
-import { serve } from "https://deno.land/std@0.175.0/http/server.ts"
+import { serve } from 'https://deno.land/std@0.175.0/http/server.ts'
+import dayjs from 'npm:dayjs@1.11.7'
+import Holidays from './Holidays.ts'
+import SpecialHolidays from './SpecialHolidays.ts'
 
-import { getSpecialHolidays } from "./getSpecialHolidays.ts"
+const DEFAULT_WORK_TIME = 7.75 // 7時間45分
 
 const handler = async (request: Request) => {
-  let query = new URL(request.url).searchParams.get('q')
-  if (query && /^\d{6}$/.test(query) === false) {
-    return new Response('Invalid query', {
-      status: 400,
-      headers: {
-        "content-type": "text/json",
-      },
-    })
-  }
-  if (!query) {
-    query = format(new Date(), 'yyyyMM')
+  const q = new URL(request.url).searchParams.get('q')
+
+  if (q && /^\d{6}$/.test(q) === false) {
+    return returnBadRequestResponse() // 400
   }
 
-  const [y, m] = [query.slice(0, 4), query.slice(4, 6)]
+  const date = q
+    ? dayjs(`${parseInt(q.slice(0, 4))}/${parseInt(q.slice(4, 6))}/01`)
+    : dayjs()
+  console.log('date: ', date.format('YYYY/MM/DD'))
 
-  console.log(`y: ${y}, m: ${m}`)
+  const holidays = (new Holidays(date)).get()
+  console.log('holidays: ', holidays)
+
+  const specialHolidays = await SpecialHolidays(date)
+  console.log('special holidays: ', specialHolidays)
+
+  const allHolidaysCount = new Set([...holidays, ...specialHolidays]).size
+  const lastDayOfMonth = date.endOf('month').date()
+  const workdays = lastDayOfMonth - allHolidaysCount
+  console.log('workdays: ', workdays)
 
   const json = JSON.stringify({
-    year: y,
-    month: m,
-    days: 31,
-    workdays: 22,
-    holidays: 8,
-    specialHolidays: (await getSpecialHolidays(query)).length,
-    workHours: 176,
+    year: date.format('YYYY'),
+    month: date.format('MM'),
+    days: lastDayOfMonth,
+    holidays: holidays.length,
+    specialHolidays: specialHolidays.length,
+    workdays: workdays,
+    workHours: workdays * DEFAULT_WORK_TIME,
   })
 
   return new Response(json, {
     status: 200,
     headers: {
-      "content-type": "text/json",
+      'content-type': 'text/json',
+    },
+  })
+}
+
+const returnBadRequestResponse = () => {
+  return new Response('Invalid query', {
+    status: 400,
+    headers: {
+      'content-type': 'text/json',
     },
   })
 }
