@@ -1,0 +1,19 @@
+{
+  "tasks": {
+    "start": "deno run --allow-net --allow-read src/main.ts",
+    "watch": "deno run --allow-net --allow-read --watch src/main.ts"
+  },
+  "fmt": {
+    "files": {
+      "include": ["src/"]
+    },
+    "options": {
+      "useTabs": false,
+      "lineWidth": 80,
+      "indentWidth": 2,
+      "singleQuote": true,
+      "semiColons": false,
+      "proseWrap": "preserve"
+    }
+  }
+}
